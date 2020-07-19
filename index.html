@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form">
+        <input type="text" id="input">
+    </form>
+
+    <script>
+        var fizzBuzz = function (num) {
+            if (num % 15 === 0) return "FizzBuzz";
+            if (num % 3 === 0) return "Fizz";
+            if (num % 5 === 0) return "Buzz";
+            return num;
+        };
+
+        var loop = function (displayFizzBuzz, value) {
+            var i = 1;
+            while ( i < value) {
+                displayFizzBuzz(i);
+                i++;
+            }
+        };
+
+        var $form = document.querySelector('#form');
+        var $input = document.querySelector('#input');
+
+        $form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            console.log('input value: ', $input.value);
+
+            loop (function (i) {
+                console.log(fizzBuzz(i));
+            }, $input.value);
+
+            $input.value = '';
+        });
+    </script>
+</body>
+</html>
