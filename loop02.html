@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form">
+        <input type="text" id="input">
+    </form>
+
+    <script>
+        var fizzBuzz = function (num) {
+            if (num % 15 === 0) return "FizzBuzz";
+            if (num % 3 === 0) return "Fizz";
+            if (num % 5 === 0) return "Buzz";
+            return num;
+        };
+
+        var asyncLoop = function (act, inputValue, delayTime) {
+            var i = 1;
+
+            setTimeout(function() {
+                while ( i <= inputValue ) {
+                    act(i); i++;
+                }
+            }, delayTime);
+        };
+
+        var $form = document.querySelector('#form');
+        var $input = document.querySelector('#input');
+
+        $form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            asyncLoop (function (i) {
+                console.log(fizzBuzz(i));
+            }, $input.value, 1000);
+
+            // input 초기화
+            $input.value = '';
+        });
+    </script>
+</body>
+</html>
