@@ -18,10 +18,10 @@
             return num;
         };
 
-        var loop = function (displayFizzBuzz, value) {
+        var loop = function (act, inputValue) {
             var i = 1;
-            while ( i <= value) {
-                displayFizzBuzz(i);
+            while ( i <= inputValue) {
+                act(i);
                 i++;
             }
         };
@@ -32,12 +32,11 @@
         $form.addEventListener("submit", function(e) {
             e.preventDefault();
 
-            console.log('input value: ', $input.value);
-
             loop (function (i) {
                 console.log(fizzBuzz(i));
             }, $input.value);
 
+            // input 초기화
             $input.value = '';
         });
     </script>
