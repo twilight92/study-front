@@ -21,7 +21,7 @@
         var asyncLoop = function (act, inputValue, timer) {
             var i = 1;
 
-            var run = setInterval(function() {
+            var run = setInterval(function () {
                 if ( i <= inputValue ) {
                     act(i); i++;
                 } else {
@@ -30,11 +30,11 @@
             }, timer);
         };
 
-        var app = function() {
+        var app = function () {
             var $form = document.querySelector('#form');
             var $input = document.querySelector('#input');
 
-            $form.addEventListener("submit", function(e) {
+            $form.addEventListener("submit", function (e) {
                 e.preventDefault();
 
                 asyncLoop (function (i) {

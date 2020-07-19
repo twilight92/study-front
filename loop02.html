@@ -21,26 +21,30 @@
         var asyncLoop = function (act, inputValue, delayTime) {
             var i = 1;
 
-            setTimeout(function() {
+            setTimeout(function () {
                 while ( i <= inputValue ) {
                     act(i); i++;
                 }
             }, delayTime);
         };
 
-        var $form = document.querySelector('#form');
-        var $input = document.querySelector('#input');
+        var app = function () {
+            var $form = document.querySelector('#form');
+            var $input = document.querySelector('#input');
 
-        $form.addEventListener("submit", function(e) {
-            e.preventDefault();
+            $form.addEventListener("submit", function (e) {
+                e.preventDefault();
 
-            asyncLoop (function (i) {
-                console.log(fizzBuzz(i));
-            }, $input.value, 1000);
+                asyncLoop (function (i) {
+                    console.log(fizzBuzz(i));
+                }, $input.value, 1000);
 
-            // input 초기화
-            $input.value = '';
-        });
+                // input 초기화
+                $input.value = '';
+            });
+        };
+
+        app();
     </script>
 </body>
 </html>

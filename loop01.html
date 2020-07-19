@@ -26,19 +26,23 @@
             }
         };
 
-        var $form = document.querySelector('#form');
-        var $input = document.querySelector('#input');
+        var app = function () {
+            var $form = document.querySelector('#form');
+            var $input = document.querySelector('#input');
 
-        $form.addEventListener("submit", function(e) {
-            e.preventDefault();
+            $form.addEventListener("submit", function (e) {
+                e.preventDefault();
 
-            loop (function (i) {
-                console.log(fizzBuzz(i));
-            }, $input.value);
+                loop (function (i) {
+                    console.log(fizzBuzz(i));
+                }, $input.value);
 
-            // input 초기화
-            $input.value = '';
-        });
+                // input 초기화
+                $input.value = '';
+            });
+        };
+
+        app();
     </script>
 </body>
 </html>
