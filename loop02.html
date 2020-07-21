@@ -21,12 +21,13 @@
         var asyncLoop = function (act, inputValue, delayTime) {
             var i = 1;
 
-            setTimeout(function () {
-                while (i <= inputValue) {
-                    act(i);
-                    i++;
-                }
-            }, delayTime);
+            while (i <= inputValue) {
+                (function (idx) {
+                    setTimeout(function () {
+                        act(idx);
+                    }, delayTime * idx);
+                })(i++);
+            }
         };
 
         var app = function () {
