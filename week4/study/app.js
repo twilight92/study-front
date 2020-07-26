@@ -21,4 +21,4 @@ const numbers = [0, -50, 444, 1, 23, 14, 5, 6, 234, 99];
 
 console.log(getMaxOrMin("max", numbers)) // 444
 console.log(getMaxOrMin("min", numbers)) // -50
-console.log(getMaxOrMin("111", numbers)) // "올바른 타입이 아닙니다."
+console.log(getMaxOrMin(111, numbers)) // "올바른 타입이 아닙니다."
