@@ -13,7 +13,7 @@ function button(props) {
 }
 
 function $(selector) {
-    const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    const el = typeof selector === "string" ? document.querySelector(selector) : selector;
 
     return {
         on: function (eventName, cb) {
