@@ -1,7 +1,7 @@
 function getMaxOrMin(type, numbers) {
-    let getNum = numbers[0];
-
     if (type !== NumberCompareType.MIN && type !== NumberCompareType.MAX) throw new Error("올바른 타입이 아닙니다.");
+
+    let getNum = numbers[0];
 
     const assignGetNum = function (idx) {
         getNum = numbers[idx];
