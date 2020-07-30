@@ -3,15 +3,25 @@ function getMaxOrMin(type, numbers) {
 
     if (type !== NumberCompareType.MIN && type !== NumberCompareType.MAX) throw new Error("올바른 타입이 아닙니다.");
 
-    const condition = function (idx) {
-        if (type === NumberCompareType.MIN) return getNum > numbers[idx];
-        if (type === NumberCompareType.MAX) return getNum < numbers[idx];
+    const assignGetNum = function (idx) {
+        getNum = numbers[idx];
     };
 
-    for (let i = 1; i < numbers.length; i++) {
-        if (condition(i)) {
-            getNum = numbers[i];
-        }
+    switch (type) {
+        case NumberCompareType.MIN:
+            for (let i = 1; i < numbers.length; i++) {
+                if (getNum > numbers[i]) {
+                   assignGetNum(i);
+                }
+            }
+            break;
+        case NumberCompareType.MAX:
+            for (let i = 1; i < numbers.length; i++) {
+                if (getNum < numbers[i]) {
+                   assignGetNum(i);
+                }
+            }
+            break;
     }
 
     return getNum;
