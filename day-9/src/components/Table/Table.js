@@ -2,6 +2,7 @@ import React from "react";
 import data from "../../../data.js"
 import RocketFreshIcon from "../../components/RocketIcon/RocketFreshIcon";
 import RocketWowIcon from "../../components/RocketIcon/RocketWowIcon";
+import "./Table.css"
 
 const rocketType = {
   ROCKET_FRESH: "ROCKET_FRESH",
@@ -70,7 +71,6 @@ const tabelComponent = data => {
 }
 
 export default function Table() {
-
   return (
     <div>
         { tabelComponent(freshProducts) }
