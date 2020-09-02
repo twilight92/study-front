@@ -2,6 +2,7 @@ import React from "react";
 import data from "../../../data.js"
 import RocketFreshIcon from "../../components/RocketIcon/RocketFreshIcon";
 import RocketWowIcon from "../../components/RocketIcon/RocketWowIcon";
+import checkInventory from "./Caution";
 import "./Table.css"
 
 const rocketType = {
@@ -48,6 +49,7 @@ const tabelComponent = data => {
                 </td>
                 <td>
                     {product.name}
+                    {checkInventory(product)}
                 </td>
                 <td>
                     {product.price}
