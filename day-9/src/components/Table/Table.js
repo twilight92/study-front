@@ -2,6 +2,7 @@ import React from "react";
 import data from "../../../data.js"
 import RocketFreshIcon from "../../components/RocketIcon/RocketFreshIcon";
 import RocketWowIcon from "../../components/RocketIcon/RocketWowIcon";
+import selectBox from "../../components/SelectBox/SelectBox";
 import checkInventory from "./Caution";
 import "./Table.css"
 
@@ -34,7 +35,6 @@ function caption({type}) {
 }
 
 const tabelComponent = data => {
-  console.log(data)
   return <table>
           <caption>{caption(data[0])}</caption>
           <tbody>
@@ -55,9 +55,7 @@ const tabelComponent = data => {
                     {product.price}
                 </td>
                 <td>
-                    <select defaultValue={1}>
-                    <option>1</option>
-                    </select>
+                    {selectBox(product)}
                 </td>
                 <td>
                     {product.price * product.count}
