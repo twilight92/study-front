@@ -2,8 +2,7 @@ import React from "react";
 import data from "../../../data.js"
 import RocketFreshIcon from "../../components/RocketIcon/RocketFreshIcon";
 import RocketWowIcon from "../../components/RocketIcon/RocketWowIcon";
-import selectBox from "../../components/SelectBox/SelectBox";
-import checkInventory from "./Caution";
+import SelectBox from "../../components/SelectBox/SelectBox";
 import "./Table.css"
 
 const rocketType = {
@@ -12,10 +11,10 @@ const rocketType = {
   PARTNER: "PARTNER"
 }
 
-const products = data.products
-const freshProducts = products.filter(item => item.type === rocketType.ROCKET_FRESH)
-const wowProducts = products.filter(item => item.type === rocketType.ROCKET_WOW)
-const partnerProducts = products.filter(item => item.type === rocketType.PARTNER)
+const products = data.products;
+const freshProducts = products.filter(item => item.type === rocketType.ROCKET_FRESH);
+const wowProducts = products.filter(item => item.type === rocketType.ROCKET_WOW);
+const partnerProducts = products.filter(item => item.type === rocketType.PARTNER);
 
 function type({type}) {
   switch (type) {
@@ -32,6 +31,11 @@ function caption({type}) {
     case rocketType.PARTNER: return "판매자배송 상품";
     default: return ""
   }
+}
+
+function checkInventory({inventory}) {
+  if (!inventory) return <p className="caution">품절</p>
+  if (inventory <= 3) return <p className="caution">품절임박 {inventory}개 잔여</p>
 }
 
 const tabelComponent = data => {
@@ -55,7 +59,7 @@ const tabelComponent = data => {
                     {product.price}
                 </td>
                 <td>
-                    {selectBox(product)}
+                    {SelectBox(product)}
                 </td>
                 <td>
                     {product.price * product.count}
