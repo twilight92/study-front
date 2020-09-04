@@ -40,8 +40,10 @@ function checkInventory({inventory}) {
 
 const tabelComponent = data => {
   return <table>
-          <tbody>
+          <thead>
             <tr><td colSpan="7">{division(data[0])}</td></tr>
+          </thead>
+          <tbody>
             {data.map(product => {
               return (
                 <tr key={product.id}>

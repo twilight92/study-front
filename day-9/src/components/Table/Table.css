@@ -2,7 +2,7 @@ table:not(:first-child) {
     margin-top: 30px;
 }
 
-tr:first-child td {
+thead tr td {
     padding: 20px 0;
     font-size: 20px;
     font-weight: bold;
