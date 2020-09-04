@@ -24,7 +24,7 @@ function type({type}) {
   }
 }
 
-function caption({type}) {
+function division({type}) {
   switch (type) {
     case rocketType.ROCKET_FRESH : return "로켓프레시 상품";
     case rocketType.ROCKET_WOW: return "로켓배송 상품(로켓와우 포함)";
@@ -35,13 +35,13 @@ function caption({type}) {
 
 function checkInventory({inventory}) {
   if (!inventory) return <p className="caution">품절</p>
-  if (inventory <= 3) return <p className="caution">품절임박 {inventory}개 잔여</p>
+  if (inventory < 5) return <p className="caution">품절임박 {inventory}개 잔여</p>
 }
 
 const tabelComponent = data => {
   return <table>
-          <caption>{caption(data[0])}</caption>
           <tbody>
+            <tr><td colSpan="7">{division(data[0])}</td></tr>
             {data.map(product => {
               return (
                 <tr key={product.id}>

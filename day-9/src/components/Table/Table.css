@@ -2,7 +2,7 @@ table:not(:first-child) {
     margin-top: 30px;
 }
 
-caption {
+tr:first-child td {
     padding: 20px 0;
     font-size: 20px;
     font-weight: bold;
@@ -12,5 +12,5 @@ caption {
 .caution {
     color: red;
     border-top: 1px solid #000;
-    padding-top: 10px;
+    padding-top: 16px;
 }
