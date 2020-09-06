@@ -1,10 +1,10 @@
 import React from "react";
-import Table from "./components/Table/Table";
+import CartProductTableRow from "./components/CartProductTableRow/CartProductTableRow";
 
 export default function App() {
   return (
     <div>
-    { <Table /> }
+    { <CartProductTableRow /> }
     </div>
   )
 }

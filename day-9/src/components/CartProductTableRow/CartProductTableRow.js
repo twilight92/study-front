@@ -1,9 +1,9 @@
 import React from "react";
 import data from "../../../data.js"
-import RocketFreshIcon from "../../components/RocketIcon/RocketFreshIcon";
-import RocketWowIcon from "../../components/RocketIcon/RocketWowIcon";
-import SelectBox from "../../components/SelectBox/SelectBox";
-import "./Table.css"
+import RocketFreshIcon from "../RocketIcon/RocketFreshIcon";
+import RocketWowIcon from "../RocketIcon/RocketWowIcon";
+import CartProductSelectBox from "../CartProductSelectBox/CartProductSelectBox";
+import "./CartProductTableRow.css"
 
 const rocketType = {
   ROCKET_FRESH: "ROCKET_FRESH",
@@ -34,21 +34,18 @@ function division({type}) {
 }
 
 function checkInventory({inventory}) {
-  if (!inventory) return <p className="caution">품절</p>
+  if (inventory === 0) return <p className="caution">품절</p>
   if (inventory < 5) return <p className="caution">품절임박 {inventory}개 잔여</p>
 }
 
 const tabelComponent = data => {
-  return <table>
-          <thead>
-            <tr><td colSpan="7">{division(data[0])}</td></tr>
-          </thead>
-          <tbody>
-            {data.map(product => {
-              return (
-                <tr key={product.id}>
+  return <>
+          <tr className="title"><td colSpan="7">{division(data[0])}</td></tr>
+          {data.map(product => {
+            return (
+              <tr key={product.id}>
                 <td>
-                    <input type={"checkbox"}/>
+                    <input type={"checkbox"} disabled={product.inventory === 0}/>
                 </td>
                 <td>
                     <img src={product.img} alt={product.name} />
@@ -61,7 +58,7 @@ const tabelComponent = data => {
                     {product.price}
                 </td>
                 <td>
-                    {SelectBox(product)}
+                    {CartProductSelectBox(product)}
                 </td>
                 <td>
                     {product.price * product.count}
@@ -69,19 +66,20 @@ const tabelComponent = data => {
                 <td>
                     {type(product)}
                 </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+              </tr>
+            )
+          })}
+        </>
 }
 
 export default function Table() {
   return (
-    <div>
+    <table>
+      <tbody>
         { tabelComponent(freshProducts) }
         { tabelComponent(wowProducts) }
         { tabelComponent(partnerProducts) }
-    </div>
+      </tbody>
+    </table>
   )
 }

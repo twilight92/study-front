@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function SelectBox({inventory}) {
+export default function CartProductSelectBox({inventory}) {
   return (
-    <select defaultValue={1}>
+    <select defaultValue={1} disabled={inventory === 0}>
       {
         [...Array(10).keys()].map((item, idx) => {
           const index = idx + 1;
