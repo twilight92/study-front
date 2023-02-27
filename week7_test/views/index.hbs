@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <div id="screen"></div>
+    <script>
+        function UserComponent(users) {
+            
+            //const userLis = users.map((user) => `<li>${user.name} : ${user.age}</li>`).join("")
+            const userLis = users.map(({name, age}) => `<li>${name} : ${age}</li>`).join("")
+            return `<ul>${userLis}</ul>`
+        }
+
+        function renderHtml(component) {
+            document.querySelector('#screen').innerHTML = component
+        }
+
+        // 자주쓰는 내용은 따로
+        // fetch then return이 인자로 들어감 
+        function toJson(res){
+            return res.json()
+        }
+
+        fetch('/api/users')
+            //.then(res => res.json())
+            .then(toJson)
+            //.then(json => console.log(json))
+            //.then(json => console.log(UserComponent(json)))
+            .then(UserComponent)
+            .then(renderHtml)
+
+
+
+        // fetch 부연설명
+        // fetch 원격지의 데이터를 읽고 난 후 res => res.json() 실행
+        /*
+            여기랑 똑같다
+            readFile('file.txt', () => {
+
+            })
+        */
+
+        /*
+            // orderSheet - 주문서
+            function order(orderSheet) {
+                const [recieptForCustomer, recieptForKichen] = pos.write(orderSheet)
+
+                const food = kichen.order(recieptForKichen)
+                return food;
+            }
+
+            const pizza = order({
+                name: '페페로니 피자'
+            });
+
+            person.eat(pizza);
+            //실생활에서는 비동기적으로 해야한다.(밑의 코드)
+            //주문을 하면 피자가 완성된 후 나는 먹을거다
+*/
+
+
+
+
+            function order(orderSheet) {
+                console.log('주문을 받았다.')
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                       // resolve([name: orderSheet.name])
+                       reject('메롱')
+                    }, 1000)
+                }) 
+            }
+            // 주문을 받은 쪽에서는 약속을 반환
+
+            const person = {
+                eat(food) {
+                    console.log(`${food.name}을 먹는다`)
+                },
+                play() {
+                    console.log('논다')
+                }
+            }
+
+            // 너가 피자를 주문햇군 내가 줄게 약속
+
+            const promise = order({
+                name: '페페로니 피자'
+            });
+
+            console.log('주문했다.')
+
+            //promise가 잘 지켜지면 푸드가 온다
+            promise.then(food => person.eat(food))
+            promise.catch(err => console.log('고소'))
+            person.play();
+
+
+
+            //주문했다
+            //주문 받았다 페페로니
+            //논다
+            //페페로니 피자 먹는다.
+        
+
+    </script>
+    
+</body>
+</html>
